@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <cctype>
 
+
 // Функция для преобразования строки в нижний регистр
 std::string toLower(const std::string& str)
 {
