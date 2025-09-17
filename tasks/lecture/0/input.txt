@@ -1,0 +1,8 @@
+Hello world! This is a test file.
+It contains several words: some words are repeated, and some are not.
+The word "hello" appears twice, and the word "world" also appears twice.
+Let's see the result.
+
+Numbers 123 and 456 are also words! Test with hyphenated-words and under_scores.
+Multiple spaces   and
+line breaks should be handled correctly.
