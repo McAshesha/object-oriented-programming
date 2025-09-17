@@ -8,18 +8,15 @@
 #include <cctype>
 
 
-// Функция для преобразования строки в нижний регистр
 std::string toLower(const std::string& str)
 {
     std::string lowerStr;
-    for (char c : str)
-    {
-        lowerStr += std::tolower(static_cast<unsigned char>(c));
-    }
+    lowerStr.reserve(str.size());
+    std::transform(str.begin(), str.end(), std::back_inserter(lowerStr),
+                   [](unsigned char c) { return std::tolower(c); });
     return lowerStr;
 }
 
-// Функция для разделения строки на слова
 std::list<std::string> extractWords(const std::string& line)
 {
     std::list<std::string> words;
@@ -108,12 +105,12 @@ int main(int argc, char** argv)
     }
 
     outputFile << "Word,Frequency,Frequency (%)\n";
-    for (const auto& pair : sortedWords)
+    for (const auto& [word, count] : sortedWords)
     {
-        double percentage = (static_cast<double>(pair.second) / totalWords) * 100.0;
-        outputFile << std::quoted(pair.first) << ","
-            << pair.second << ","
-            << std::fixed << std::setprecision(2) << percentage << "%\n";
+        double percentage = (static_cast<double>(count) / totalWords) * 100.0;
+        outputFile << std::quoted(word) << ","
+                   << count << ","
+                   << std::fixed << std::setprecision(2) << percentage << "%\n";
     }
     outputFile.close();
 
