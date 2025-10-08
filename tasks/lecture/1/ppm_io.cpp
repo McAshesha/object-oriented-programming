@@ -153,9 +153,7 @@ bool save_image(const std::string& path, const Image& image)
         return false;
     }
 
-    Image toWrite = image;
-    const std::size_t contiguousRowBytes = static_cast<std::size_t>(image.cols()) * static_cast<std::size_t>(ch);
-    toWrite = image.clone();
+    Image toWrite = image.clone();
 
     std::ofstream ofs(path, std::ios::binary);
     if (!ofs)
