@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <cmath>
 
-Image Invert(const Image& src)
+Image invert(const Image& src)
 {
     if (src.empty())
     {
@@ -18,7 +18,7 @@ Image Invert(const Image& src)
     return out;
 }
 
-Image ToGrayscale(const Image& src)
+Image to_grayscale(const Image& src)
 {
     if (src.empty())
     {
@@ -52,7 +52,7 @@ Image ToGrayscale(const Image& src)
     return gray;
 }
 
-Image ResizeNearest(const Image& src, int newWidth, int newHeight)
+Image resize_nearest(const Image& src, int newWidth, int newHeight)
 {
     if (src.empty() || newWidth <= 0 || newHeight <= 0)
     {
@@ -91,7 +91,7 @@ Image ResizeNearest(const Image& src, int newWidth, int newHeight)
     return dst;
 }
 
-Image Crop(const Image& src, int x, int y, int w, int h)
+Image crop(const Image& src, int x, int y, int w, int h)
 {
     if (src.empty() || w <= 0 || h <= 0)
     {

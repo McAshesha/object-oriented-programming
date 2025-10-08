@@ -5,7 +5,7 @@
 #include "ppm_io.h"
 #include "ops.h"
 
-static void PrintUsage(const char* argv0)
+static void print_usage(const char* argv0)
 {
     std::cout
         << "imgtool — минималистичная CLI-утилита на наших классах Image/Range от Ковалёва Всеволода Ярославовича\n"
@@ -28,7 +28,7 @@ int main(int argc, char** argv)
 {
     if (argc < 3)
     {
-        PrintUsage(argv[0]);
+        print_usage(argv[0]);
         return 1;
     }
 
@@ -38,11 +38,11 @@ int main(int argc, char** argv)
     {
         if (argc != 3)
         {
-            PrintUsage(argv[0]);
+            print_usage(argv[0]);
             return 1;
         }
         Image img;
-        if (!LoadImage(argv[2], img))
+        if (!load_image(argv[2], img))
         {
             std::cerr << "ERROR: failed to load image: " << argv[2] << "\n";
             return 2;
@@ -56,11 +56,11 @@ int main(int argc, char** argv)
     {
         if (argc != 4)
         {
-            PrintUsage(argv[0]);
+            print_usage(argv[0]);
             return 1;
         }
         Image img;
-        if (!LoadImage(argv[2], img))
+        if (!load_image(argv[2], img))
         {
             std::cerr << "ERROR: failed to load image: " << argv[2] << "\n";
             return 2;
@@ -77,11 +77,11 @@ int main(int argc, char** argv)
     {
         if (argc != 4)
         {
-            PrintUsage(argv[0]);
+            print_usage(argv[0]);
             return 1;
         }
         Image img;
-        if (!LoadImage(argv[2], img))
+        if (!load_image(argv[2], img))
         {
             std::cerr << "ERROR: failed to load image: " << argv[2] << "\n";
             return 2;
@@ -98,7 +98,7 @@ int main(int argc, char** argv)
     {
         if (argc != 8)
         {
-            PrintUsage(argv[0]);
+            print_usage(argv[0]);
             return 1;
         }
         const int x = std::atoi(argv[3]);
@@ -107,7 +107,7 @@ int main(int argc, char** argv)
         const int h = std::atoi(argv[6]);
 
         Image img;
-        if (!LoadImage(argv[2], img))
+        if (!load_image(argv[2], img))
         {
             std::cerr << "ERROR: failed to load image: " << argv[2] << "\n";
             return 2;
@@ -129,14 +129,14 @@ int main(int argc, char** argv)
     {
         if (argc != 6)
         {
-            PrintUsage(argv[0]);
+            print_usage(argv[0]);
             return 1;
         }
         const int newW = std::atoi(argv[3]);
         const int newH = std::atoi(argv[4]);
 
         Image img;
-        if (!LoadImage(argv[2], img))
+        if (!load_image(argv[2], img))
         {
             std::cerr << "ERROR: failed to load image: " << argv[2] << "\n";
             return 2;
@@ -156,7 +156,7 @@ int main(int argc, char** argv)
     }
     else
     {
-        PrintUsage(argv[0]);
+        print_usage(argv[0]);
         return 1;
     }
 }

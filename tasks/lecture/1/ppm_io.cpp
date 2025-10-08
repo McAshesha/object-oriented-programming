@@ -6,7 +6,7 @@
 
 namespace
 {
-    bool NextToken(std::istream& is, std::string& token)
+    bool next_token(std::istream& is, std::string& token)
     {
         token.clear();
 
@@ -51,28 +51,28 @@ namespace
         return !token.empty();
     }
 
-    bool ReadHeader(std::istream& is, std::string& magic, int& width, int& height, int& maxval)
+    bool read_header(std::istream& is, std::string& magic, int& width, int& height, int& maxval)
     {
         std::string tok;
 
-        if (!NextToken(is, magic))
+        if (!next_token(is, magic))
         {
             return false;
         }
 
-        if (!NextToken(is, tok))
+        if (!next_token(is, tok))
         {
             return false;
         }
         width = std::stoi(tok);
 
-        if (!NextToken(is, tok))
+        if (!next_token(is, tok))
         {
             return false;
         }
         height = std::stoi(tok);
 
-        if (!NextToken(is, tok))
+        if (!next_token(is, tok))
         {
             return false;
         }
@@ -90,7 +90,7 @@ namespace
 
 }
 
-bool LoadImage(const std::string& path, Image& outImage)
+bool load_image(const std::string& path, Image& outImage)
 {
     std::ifstream ifs(path, std::ios::binary);
     if (!ifs)
@@ -100,7 +100,7 @@ bool LoadImage(const std::string& path, Image& outImage)
 
     std::string magic;
     int w = 0, h = 0, maxval = 0;
-    if (!ReadHeader(ifs, magic, w, h, maxval))
+    if (!read_header(ifs, magic, w, h, maxval))
     {
         return false;
     }
@@ -140,7 +140,7 @@ bool LoadImage(const std::string& path, Image& outImage)
     return true;
 }
 
-bool SaveImage(const std::string& path, const Image& image)
+bool save_image(const std::string& path, const Image& image)
 {
     if (image.empty())
     {

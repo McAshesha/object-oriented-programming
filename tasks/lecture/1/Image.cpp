@@ -1,6 +1,5 @@
 #include "Image.h"
 
-#include <algorithm>
 #include <cassert>
 #include <cstring>
 

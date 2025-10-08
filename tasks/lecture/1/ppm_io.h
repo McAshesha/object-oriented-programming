@@ -2,6 +2,6 @@
 #include <string>
 #include "Image.h"
 
-bool LoadImage(const std::string& path, Image& outImage);
+bool load_image(const std::string& path, Image& outImage);
 
-bool SaveImage(const std::string& path, const Image& image);
+bool save_image(const std::string& path, const Image& image);
