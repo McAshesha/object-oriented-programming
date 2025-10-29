@@ -2,8 +2,6 @@
 #include <fstream>
 #include <string>
 
-// An adaptive grim strategy: cooperate until someone defects,
-// then defect for 3 rounds; if both cooperate for 2 consecutive rounds, forgive.
 class AdaptiveGrim final : public Strategy
 {
 public:
@@ -17,7 +15,6 @@ public:
         int punish = cooldown;
         if (punish > 0) return Move::D;
 
-        // If last round any defected, start cooldown
         if (!opponentAHistory.empty() && !opponentBHistory.empty())
         {
             if (opponentAHistory.back() == Move::D || opponentBHistory.back() == Move::D)
@@ -31,14 +28,11 @@ public:
 
     void onRoundEnd(Move, Move a, Move b) override
     {
-        // Decrease cooldown
         if (cooldown > 0) cooldown--;
 
-        // Track forgiveness window: if both cooperated, increase streak, else reset.
         if (a == Move::C && b == Move::C) forgiveStreak++;
         else forgiveStreak = 0;
 
-        // If cooperating for forgiveThreshold, reset cooldown early.
         if (forgiveStreak >= forgiveThreshold)
         {
             cooldown = 0;
