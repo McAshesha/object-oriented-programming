@@ -25,8 +25,8 @@ PayoffMatrix PayoffMatrix::Default()
     setScore(Move::C, Move::C, Move::C, 7, 7, 7);
     setScore(Move::C, Move::C, Move::D, 3, 3, 9);
     setScore(Move::C, Move::D, Move::C, 3, 9, 3);
-    setScore(Move::D, Move::C, Move::C, 9, 3, 3);
     setScore(Move::C, Move::D, Move::D, 0, 5, 5);
+    setScore(Move::D, Move::C, Move::C, 9, 3, 3);
     setScore(Move::D, Move::C, Move::D, 5, 0, 5);
     setScore(Move::D, Move::D, Move::C, 5, 5, 0);
     setScore(Move::D, Move::D, Move::D, 1, 1, 1);
